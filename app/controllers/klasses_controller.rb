@@ -1,4 +1,5 @@
 class KlassesController < ApplicationController
+    before_action :set_class, only: [:show, :create, :edit, :update, :destroy]
 
     
       def index
@@ -6,7 +7,7 @@ class KlassesController < ApplicationController
       end
     
       def show
-        @klass = Klass.find(params[:id])
+        #@klass = Klass.find(params[:id])
       end
 
       def new
@@ -14,7 +15,7 @@ class KlassesController < ApplicationController
       end
     
       def create
-        @klass = Klass.new(klass_params)
+        #@klass = Klass.new(klass_params)
          if @klass.save
         #byebug
         redirect_to klasses_path(@klass)
@@ -22,12 +23,12 @@ class KlassesController < ApplicationController
       end
 
       def edit
-        @klass = Klass.find(params[:id])
+       # @klass = Klass.find(params[:id])
         
       end
     
       def update
-        @klass = Klass.find(params[:id])
+        #@klass = Klass.find(params[:id])
         @song.update(klass_params)
         redirect_to klass_path(@klass)
       end
@@ -37,6 +38,10 @@ class KlassesController < ApplicationController
       end
 
       private
+
+      def set_class
+       # @klass = Klass.find(params[:id])
+      end
 
       def klass_params 
          params.require(:klass).permit(:name, :instructor, :scheduled_time)
