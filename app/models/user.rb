@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has_one :schedule
-    has_many :classes, through: :schedule
+    has_many :userklass
+    has_many :klasses, through: :schedule
 end

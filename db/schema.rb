@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_202942) do
+ActiveRecord::Schema.define(version: 2020_10_13_201415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "UserKlass", force: :cascade do |t|
+    t.bigint "klasses_id"
+    t.bigint "users_id"
+    t.boolean "reminder"
+    t.index ["klasses_id"], name: "index_UserKlass_on_klasses_id"
+    t.index ["users_id"], name: "index_UserKlass_on_users_id"
+  end
 
   create_table "klasses", force: :cascade do |t|
     t.string "name"
@@ -42,4 +50,6 @@ ActiveRecord::Schema.define(version: 2020_10_09_202942) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "UserKlass", "klasses", column: "klasses_id"
+  add_foreign_key "UserKlass", "users", column: "users_id"
 end

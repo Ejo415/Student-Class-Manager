@@ -1,5 +1,5 @@
 class Klass < ApplicationRecord
-    belongs_to :schedule
+   # belongs_to :schedule
     has_many :users, through: :schedule
     validates :name, presence: true
     validates :instructor, presence: true
