@@ -1,5 +1,5 @@
 class Klass < ApplicationRecord
-    has_many: :userklass
+    has_many :userklass
     has_many :users, through: :userklass
     validates :name, presence: true
     validates :instructor, presence: true
