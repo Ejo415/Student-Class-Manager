@@ -13,7 +13,7 @@ def create
 end
 
 def show 
-    byebug
+    #byebug
     @user = User.find(params[:id])
     #byebug
 end
