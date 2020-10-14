@@ -1,0 +1,3 @@
+class UserKlasses < ApplicationController
+    
+end
