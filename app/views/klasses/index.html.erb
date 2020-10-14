@@ -1,5 +1,5 @@
 <h1>Class List</h1>
 
-<% @klass.each do |c| %>
-	<p><%= c.name %></p>
+<% @klass.each do |klass| %>
+	<li><%=link_to klass.name, klass_path(klass) %></li>
 <% end %>
