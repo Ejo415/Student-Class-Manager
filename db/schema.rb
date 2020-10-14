@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_220202) do
+ActiveRecord::Schema.define(version: 2020_10_14_185937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "UserKlass", force: :cascade do |t|
-    t.bigint "klasses_id"
-    t.bigint "users_id"
-    t.boolean "reminder"
-    t.index ["klasses_id"], name: "index_UserKlass_on_klasses_id"
-    t.index ["users_id"], name: "index_UserKlass_on_users_id"
-  end
 
   create_table "klasses", force: :cascade do |t|
     t.string "name"
@@ -39,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_10_13_220202) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_klasses", force: :cascade do |t|
+    t.integer "klass_id"
+    t.integer "user_id"
+    t.boolean "reminder"
+    t.index ["klass_id"], name: "index_user_klasses_on_klass_id"
+    t.index ["user_id"], name: "index_user_klasses_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -51,6 +51,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_220202) do
     t.string "name"
   end
 
-  add_foreign_key "UserKlass", "klasses", column: "klasses_id"
-  add_foreign_key "UserKlass", "users", column: "users_id"
+  add_foreign_key "user_klasses", "klasses"
+  add_foreign_key "user_klasses", "users"
 end
