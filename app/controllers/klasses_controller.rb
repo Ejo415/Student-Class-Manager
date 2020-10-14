@@ -15,7 +15,7 @@ class KlassesController < ApplicationController
       end
     
       def create
-        #@klass = Klass.new(klass_params)
+        @klass = Klass.new(klass_params)
          if @klass.save
         #byebug
         redirect_to klasses_path(@klass)
