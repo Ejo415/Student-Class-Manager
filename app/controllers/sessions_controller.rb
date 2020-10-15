@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorized, only: [:new, :create, :welcome]
+    skip_before_action :authorized, only: [:new, :create, :welcome, :google]
     def new
     end
 
@@ -21,8 +21,27 @@ class SessionsController < ApplicationController
         redirect_to '/welcome'
     end
 
+    def google
+      
+      @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+        user.name= auth["info"]["first_name"]
+        user.username= auth["info"]["name"]
+        user.password= SecureRandom.hex(20)
+      
+   end
+    
+    if @user && @user.id
+      session[:user_id] = @user.id
+       redirect_to welcome_path
+     else
+        redirect_to welcome_path
+      end
+    end
+   
+    private
 
-    def page_requires_login
+    def auth
+      request.env['omniauth.auth']
     end
 
-    end
+  end

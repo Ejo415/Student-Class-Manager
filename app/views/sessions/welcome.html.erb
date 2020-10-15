@@ -1,6 +1,13 @@
-<h1>Welcome</h1>
+<h1>Welcome to Liberty Haganah!</h1>
 <% if logged_in? %>
     <h1>You are Logged In, <%= current_user.username %></h1>
-<%end%>
-<%= button_to "Login", '/login', method: :get%>
+    <%= button_to "Log out", '/session', method: :delete%>
+    <br>
+    <%=link_to "Classes", klasses_path %>
+<%else%>
 <%= button_to "Sign Up", '/users/new', method: :get%>
+<%= button_to "Login", '/login', method: :get%>
+<%= button_to "Login with Google", '/auth/google_oauth2'%>
+
+
+<%end%>
