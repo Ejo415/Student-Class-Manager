@@ -1,0 +1,43 @@
+ <%= form_for @uk, url: klass_user_klasses_path(@klass) do |c| %>
+
+	<%=c.collection_select :id, Klass.all, :id, :name %>
+     <%= c.submit %> 
+ <%end%>
+
+
+   #def new 
+     #   byebug
+      #  if params[:klass_id]
+      #      @klass = Klass.find_by_id(params[:klass_id])
+      #      @uk = @klass.user_klasses.build
+      #  end
+    #end
+
+    class UserKlassesController < ApplicationController
+
+  
+
+    def create 
+        if params[:klass_id]
+            @klass = Klass.find_by_id(params[:klass_id])
+            @uk = @Klass.user_klasses.build(uk_params)
+          else 
+        @uk = UserKlass.new(uk_params)
+          end
+        if @uk.save
+       #byebug
+       redirect_to users_path
+        end
+    end
+
+    private 
+
+    def uk_params
+        params.require(:user_klass).permit(:user_id, :klass_id, :reminder) 
+    end
+
+    
+end
+
+
+	<%=c.radio_button :klass_id, Klass.all, :id, :name %>
