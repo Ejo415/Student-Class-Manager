@@ -1,4 +1,4 @@
 class UserKlass < ApplicationRecord
-    belongs_to :users 
-    belongs_to :klasses
+    belongs_to :user
+    belongs_to :klass
 end
