@@ -3,3 +3,5 @@
 <% @klass.each do |klass| %>
 	<li><%=link_to klass.name, klass_path(klass) %></li>
 <% end %>
+<br>
+<%= button_to "Home", '/welcome', method: :get%>
