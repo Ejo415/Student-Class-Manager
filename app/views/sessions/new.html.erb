@@ -1,4 +1,9 @@
 <h1>Login</h1>
+
+<% if @errors %>
+    <p><%= @errors %></p>
+  <% end %>
+  
    <%= form_tag '/login' do %>
    <%= label_tag :username%>
    <%= text_field_tag :username %>
