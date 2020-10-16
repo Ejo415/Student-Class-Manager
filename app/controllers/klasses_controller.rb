@@ -1,5 +1,5 @@
 class KlassesController < ApplicationController
-    before_action :set_class, only: [:show, :create, :edit, :update, :destroy]
+    before_action :set_class, only: [:show, :edit, :update, :destroy]
 
     
       def index
@@ -7,7 +7,6 @@ class KlassesController < ApplicationController
       end
     
       def show
-        #@klass = Klass.find(params[:id])
       end
 
       def new
@@ -23,20 +22,23 @@ class KlassesController < ApplicationController
       end
 
       def edit
-       # @klass = Klass.find(params[:id])
-        
       end
     
       def update
-        #@klass = Klass.find(params[:id])
-        @song.update(klass_params)
+        @klass.update(klass_params)
         redirect_to klass_path(@klass)
       end
     
       def destroy
-        klass = Klass.find(params[:id])
+        
+        if @klass.destroy
+          redirect_to klasses_path
+        else
+          flash[:notice] = "Was unable to delete class!"
+          redirect_to @klass
+        end
       end
-
+      
       private
 
       def set_class
