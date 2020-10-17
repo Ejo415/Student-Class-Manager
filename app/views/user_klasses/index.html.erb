@@ -1,0 +1,10 @@
+<h1>Your Schedule</h1>
+
+<%@user_klasses.each do |s|%>
+<li><%=link_to s.klass.name, user_user_klass_path(s.klass_id, s.id ) %> <%= s.klass.scheduled_time %></li>
+<%end%>
+
+<br>
+
+<%= button_to "All Classes", '/klasses', method: :get%>
+<%= button_to "Home", '/welcome', method: :get%>
