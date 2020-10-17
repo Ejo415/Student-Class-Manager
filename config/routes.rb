@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :klasses do
     resources :user_klasses
   end
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
