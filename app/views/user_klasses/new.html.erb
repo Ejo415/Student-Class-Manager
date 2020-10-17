@@ -1,0 +1,8 @@
+<h1>Register for a Class!</h1>
+
+<%= form_for @uk, url: klass_user_klasses_path(@klass) do |c| %>
+
+    <%= c.label "Reminder?" %> <br />
+    <%= c.check_box :reminder %> <br />
+    <%= c.submit %> 
+ <%end%>
