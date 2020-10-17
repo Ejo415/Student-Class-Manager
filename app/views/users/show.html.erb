@@ -1,0 +1,15 @@
+<h1><%= @user.username %></h1>
+<p> Your Profile</p>
+<p>Name: <%= @user.name %></p>
+<p>Age: <%= @user.age %></p>
+<p>Skill Level: <%= @user.skill_level %></p>
+
+
+  
+<h2><%=link_to "Your Schedule", user_user_klasses_path(current_user) %></h2>
+<br>
+<%= button_to "Edit", edit_user_path(@user), method: :get%>
+
+<br>
+<%= button_to "Home", '/welcome', method: :get%>
+
