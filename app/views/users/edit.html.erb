@@ -1,0 +1,40 @@
+<h1>Edit Profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being created:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for @user do |f|%>
+  <label>Email:</label><br>
+  <%= f.text_field :email %><br>
+
+  <label>Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Username:</label><br>
+  <%= f.text_field :username %><br>
+
+  <label>Password:</label><br>
+  <%= f.text_field :password %><br>
+
+  <label>Age:</label><br>
+  <%= f.text_field :age %><br>
+
+  <label>Skill Level:</label><br>
+  <%= f.text_field :skill_level %><br>
+
+   <%= f.label "Instructor?" %> <br />
+   <%= f.check_box :instructor %> <br />
+
+  <%= f.submit %>
+<%end%>
+<%end%>
