@@ -1,0 +1,12 @@
+<h1> Your Class </h1>
+
+Class: <%= @user_klasses.klass.name%>
+<br>
+Instructor: <%= @user_klasses.klass.instructor%>
+<br>
+Scheduled Time: <%= @user_klasses.klass.scheduled_time%>
+
+<%= button_to "Delete", @user_klass , method: :delete, data: {confirm: "Are you sure?"} %>
+
+<br>
+<%= button_to "Home", '/welcome', method: :get%>
