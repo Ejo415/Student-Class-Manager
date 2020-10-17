@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
+    before_action :set_user, only: [:show, :update, :edit]
 
 
 def new
@@ -7,7 +8,7 @@ def new
 end
 
 def create 
-    @user = User.new(params.require(:user).permit(:username, :password, :email, :name, :age, :skill_level))
+    @user = User.new(user_params)
         if @user.save
         session[:user_id] = @user.id
         redirect_to '/welcome'
@@ -22,6 +23,30 @@ def show
     @user = User.find(params[:id])
     @klass = Klass.all
     #byebug
+end
+
+def edit
+end
+
+def update
+    
+  if @user.update(user_params)
+  #byebug
+  redirect_to user_path(@user)
+else
+    @errors = @user.errors.full_messages.uniq
+       render '/users/edit'
+    end
+end
+
+private
+
+def set_user
+    @user = current_user
+end
+
+def user_params
+    params.require(:user).permit(:username, :password, :email, :name, :age, :skill_level, :instructor)
 end
 
 end
