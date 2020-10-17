@@ -1,3 +1,16 @@
 <h1><%= @klass.name %></h1>
 
 <p>Instructor: <%= @klass.instructor%></p>
+
+<p>Schedule: <%= @klass.scheduled_time%></p>
+
+<%=link_to "Classes", klasses_path %>
+<br>
+<%= button_to "Register", new_klass_user_klass_path(@klass) , method: :get  %>
+
+<%if current_user.instructor%>
+<%= button_to "Edit", edit_klass_path(@klass), method: :get%>
+<%= button_to "Delete", @klass , method: :delete, data: {confirm: "Are you sure?"} %>
+<%end%>
+<br>
+<%= button_to "Home", '/welcome', method: :get%>
