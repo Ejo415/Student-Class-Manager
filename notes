@@ -41,3 +41,8 @@ end
 
 
 	<%=c.radio_button :klass_id, Klass.all, :id, :name %>
+
+     <%if current user == instructors%>
+
+  <%= button_to "Edit", edit_klass_path(@klass), method: :get%>
+  <%else%>
