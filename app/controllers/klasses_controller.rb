@@ -10,7 +10,11 @@ class KlassesController < ApplicationController
       end
 
       def new
+        if current_user.instructor
         @klass = Klass.new
+        else
+          redirect_to '/welcome'
+        end
       end
     
       def create
@@ -22,11 +26,17 @@ class KlassesController < ApplicationController
       end
 
       def edit
+        if current_user.instructor
+          else
+          redirect_to '/welcome'
+        end
+
       end
     
       def update
         @klass.update(klass_params)
         redirect_to klass_path(@klass)
+        
       end
     
       def destroy
