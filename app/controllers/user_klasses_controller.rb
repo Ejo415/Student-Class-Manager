@@ -16,6 +16,10 @@ class UserKlassesController < ApplicationController
         if @uk.save
        redirect_to user_path(current_user)
         end
+        if @uk.reminder == true
+            UserMailer.reminder(current_user).deliver_now
+        end
+    
     end
 
     def index
