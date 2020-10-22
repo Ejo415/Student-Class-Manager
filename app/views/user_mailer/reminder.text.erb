@@ -1,6 +1,6 @@
 Hello, <%= @user.name %>
 ===============================================
 You have requested a reminder for your class,
-you have signed up for<%=@user.user_klasses.klass%> on <>.
+ you have signed up for <%=@user.klasses.find(2).name%> on <%=@user.klasses.find(2).scheduled_time%>.
 Can't wait to see you!
 
