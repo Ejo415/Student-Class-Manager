@@ -46,3 +46,6 @@ end
 
   <%= button_to "Edit", edit_klass_path(@klass), method: :get%>
   <%else%>
+
+    </ul>
+    </div>
