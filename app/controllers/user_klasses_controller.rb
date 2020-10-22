@@ -1,13 +1,13 @@
 class UserKlassesController < ApplicationController
   
     def new
-        @klass = Klass.find_by_id(params[:klass_id])
+        set_klass
         @uk = @klass.user_klasses.build
     end
 
     def create 
         if params[:klass_id]
-            @klass = Klass.find_by_id(params[:klass_id])
+            set_klass
             @uk = current_user.user_klasses.build(klass_id: params[:klass_id],reminder: params[:user_klass][:reminder])
           else 
         @uk = UserKlass.new(uk_params)
@@ -59,6 +59,10 @@ class UserKlassesController < ApplicationController
 
     def uk_params
         params.require(:user_klass).permit(:user_id, :klass_id, :reminder) 
+    end
+
+    def set_klass
+      @klass = Klass.find_by_id(params[:klass_id])
     end
    
    
