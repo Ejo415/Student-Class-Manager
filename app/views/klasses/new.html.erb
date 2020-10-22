@@ -3,13 +3,8 @@
 
 <%= form_for(@klass) do |c| %>
   <label>Class:</label><br>
-  <%= c.text_field :name %><br>
-
-  <label>Instructor:</label><br>
-  <%= c.text_field :instructor %><br>
-
-  <label>Day/Time:</label><br>
-  <%= c.text_field :scheduled_time %><br>
+  
+  <%= render 'form', c: c%>
 
   <%= c.submit %>
 <% end %>
