@@ -10,7 +10,7 @@ class KlassesController < ApplicationController
       end
 
       def new
-        if current_user.instructor
+        if instructor
         @klass = Klass.new
         else
           redirect_to '/welcome'
@@ -26,7 +26,7 @@ class KlassesController < ApplicationController
       end
 
       def edit
-        if current_user.instructor
+        if instructor
           else
           redirect_to '/welcome'
         end
