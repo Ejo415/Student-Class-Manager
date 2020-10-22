@@ -40,8 +40,7 @@ class UserKlassesController < ApplicationController
             else
                 redirect_to '/welcome'
             end
-       # @user_klasses = UserKlass.find(params[:id])
-       # @user = current_user
+      
     end
 
     
