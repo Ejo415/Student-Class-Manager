@@ -1,15 +1,10 @@
 <h1>Welcome to Liberty Haganah!</h1>
 <% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
-    <%= button_to "Log out", '/session', method: :delete%>
-    <br>
-    <%=link_to "Classes", klasses_path %>
-      <br>
-    <%=link_to "Your Profile", user_path(current_user) %>
+<p> Welcome Back <%= current_user.name %></p>
+
 <%else%>
-<%= button_to "Sign Up", '/users/new', method: :get%>
-<%= button_to "Login", '/login', method: :get%>
-<%= button_to "Login with Google", '/auth/google_oauth2'%>
+
+<p>Please Log In or Sign Up above!</p>
 
 
 <%end%>
