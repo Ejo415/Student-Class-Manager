@@ -49,3 +49,14 @@ end
 
     </ul>
     </div>
+
+        <p>You are Logged In, <%= current_user.username %></p>
+    <%= button_to "Log out", '/session', method: :delete%>
+    <br>
+    <%=link_to "Classes", klasses_path %>
+      <br>
+    <%=link_to "Your Profile", user_path(current_user) %>
+<%else%>
+<%= button_to "Sign Up", '/users/new', method: :get%>
+<%= button_to "Login", '/login', method: :get%>
+<%= button_to "Login with Google", '/auth/google_oauth2'%>
