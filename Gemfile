@@ -26,7 +26,7 @@ gem 'devise', '~> 4.2'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
-gem 'rails_layout'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
