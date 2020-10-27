@@ -3,7 +3,7 @@ class KlassesController < ApplicationController
 
     
       def index
-        @klass = Klass.all
+        @klass = Klass.order(:name)
       end
     
       def show
